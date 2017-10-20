@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<GenerateSAMLAssertion ignoreContentType="false" name="Generate-SAML-Assertion-1">
+    <DisplayName>Generate SAML Assertion-1</DisplayName>
+    <KeyStore>
+        <Name ref="reference">keystorename</Name>
+        <Alias ref="reference">alias</Alias>
+    </KeyStore>
+    <Subject ref="reference">subject</Subject>
+    <Issuer ref="reference">issuer</Issuer>
+    <Template ignoreUnresolvedVariables="false"/>
+    <OutputVariable>
+        <Message name="message">
+            <Namespaces>
+                <Namespace prefix="test">http://www.example.com/test</Namespace>
+            </Namespaces>
+            <XPath>/envelope/header</XPath>
+        </Message>
+        <FlowVariable name="assertion.content"/>
+    </OutputVariable>
+</GenerateSAMLAssertion>

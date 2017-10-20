@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<FlowCallout async="false" continueOnError="false" enabled="true" name="Flow-Callout-1">
+    <DisplayName>Flow Callout-1</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <SharedFlowBundle>EdgeSimpleCallService</SharedFlowBundle>
+</FlowCallout>

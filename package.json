@@ -1,0 +1,41 @@
+{
+  "name": "edge",
+  "version": "1.0.0",
+  "description": "Tool for apigee",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "clear": "0.0.1",
+    "clui": "^0.3.6",
+    "figlet": "^1.1.2",
+    "lodash": "^4.17.4",
+    "nodegit": "^0.19.0",
+    "preferences": "^0.2.1",
+    "touch": "^1.0.0",
+    "vorpal": "^1.12.0",
+    "string-template": "1.0.0",
+    "request": "2.81",
+    "request-promise-native": "^1.0.4",
+    "inquirer": "^3.2.2",
+    "swagger-parser": "^3.4.2",
+    "fs-plus": "^3.0.0",
+    "to-xml": "^0.1.3",
+    "from-xml": "^0.1.6",
+    "dotty": "^0.0.2",
+    "moment": "^2.19.1",
+    "mocha": "~3.5.3",
+    "chai": "~4.1.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "apigee",
+    "tools"
+  ],
+  "author": "Miguel Godoy <miguelgodoyg@gmail.com>",
+  "license": "ISC"
+}

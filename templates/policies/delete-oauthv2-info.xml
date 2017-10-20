@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DeleteOAuthV2Info async="false" continueOnError="false" enabled="true" name="Delete-OAuth-v20-Info-1">
+    <DisplayName>Delete OAuth v2.0 Info-1</DisplayName>
+    <Properties/>
+    <AccessToken ref="request.header.token"/>
+    <!--<AuthorizationCode ref="{flow.variable}"/>-->
+</DeleteOAuthV2Info>

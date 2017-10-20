@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DeleteOAuthV1Info async="false" continueOnError="false" enabled="true" name="Delete-OAuth-v10-Info-1">
+    <DisplayName>Delete OAuth v1.0 Info-1</DisplayName>
+    <Properties/>
+    <AccessToken ref="request.header.token"/>
+    <!--<RequestToken ref="request.header.token"></RequestToken>-->
+    <!--<Verifier ref="request.header.verifier"></Verifier>-->
+</DeleteOAuthV1Info>

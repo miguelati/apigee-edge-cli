@@ -1,0 +1,4 @@
+<FaultRule name="FaultRuleTemplate">
+	<Step/>
+	<Condition/>
+</FaultRule>

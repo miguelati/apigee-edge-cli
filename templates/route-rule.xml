@@ -1,0 +1,4 @@
+<RouteRule name="default">
+	<TargetEndpoint>default</TargetEndpoint>
+	<Condition/>
+</RouteRule>

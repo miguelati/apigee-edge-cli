@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<OAuthV1 async="false" continueOnError="false" enabled="true" name="OAuth-v10a-1">
+    <DisplayName>OAuth v1.0a-1</DisplayName>
+    <Properties/>
+    <Operation>VerifyAccessToken</Operation>
+    <GenerateResponse enabled="true">
+        <Format>FORM_PARAM</Format>
+    </GenerateResponse>
+    <GenerateErrorResponse enabled="true">
+        <Format>FORM_PARAM</Format>
+        <Realm/>
+    </GenerateErrorResponse>
+</OAuthV1>

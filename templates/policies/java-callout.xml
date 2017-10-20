@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<JavaCallout async="false" continueOnError="false" enabled="true" name="Java-Callout-1">
+    <DisplayName>Java Callout-1</DisplayName>
+    <Properties/>
+    <ClassName>class</ClassName>
+    <ResourceURL>java://setTargetUrl.js</ResourceURL>
+</JavaCallout>

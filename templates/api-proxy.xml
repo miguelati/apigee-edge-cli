@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="31" name="tigo_mobile_py_billing_v2">
+    <Basepaths/>
+    <ConfigurationVersion majorVersion="0" minorVersion="0"/>
+    <CreatedAt/>
+    <CreatedBy/>
+    <Description/>
+    <DisplayName/>
+    <LastModifiedAt/>
+    <LastModifiedBy/>
+    <Policies/>
+    <ProxyEndpoints/>
+    <Resources/>
+    <Spec/>
+    <TargetServers/>
+    <TargetEndpoints/>
+    <validate/>
+</APIProxy>
