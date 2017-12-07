@@ -1,27 +1,18 @@
 
-var clear = require("clear");
-var CLI = require("clui");
-var figlet = require("figlet");
-var Preferences = require("preferences");
-var Spinner = CLI.Spinner;
-var _ = require("lodash");
-var touch = require("touch");
-var files = require("./lib/files");
+const clear = require("clear");
+const CLI = require("clui");
+const figlet = require("figlet");
+const Preferences = require("preferences");
+const Spinner = CLI.Spinner;
+const _ = require("lodash");
+const touch = require("touch");
+const files = require("./lib/files");
 const vorpal = require('vorpal')();
 const chalk = vorpal.chalk;
-var SwaggerParser = require('swagger-parser');
-var fs = require("fs-plus");
+const SwaggerParser = require('swagger-parser');
+const fs = require("fs-plus");
 // Xml Classes
-var Step = require('./lib/classes/xml/Step');
-var Flow = require('./lib/classes/xml/Flow');
-var FaultRule = require('./lib/classes/xml/FaultRule');
-var ApiProxy = require('./lib/classes/xml/ApiProxy');
-var HTTPProxyConnection = require('./lib/classes/xml/HTTPProxyConnection');
-var RouteRule = require('./lib/classes/xml/RouteRule');
-var ProxyEndpoint = require('./lib/classes/xml/ProxyEndpoint');
-var TargetEndpoint = require('./lib/classes/xml/TargetEndpoint');
-var HTTPTargetConnection = require('./lib/classes/xml/HTTPTargetConnection');
-var AccessControl = require('./lib/classes/xml/policies/AccessControl');
+const ApiProxy = require('./lib/classes/generates/ApiProxy');
 
 clear();
 console.log(
@@ -34,97 +25,7 @@ vorpal
   .command('init', 'Load swagger and create proxy with specs')
   .action(function(args, callback) {
 
-
-    var accessControl = new AccessControl({name: "Test-Access-1", displayName: "Test Access 1"});
-    accessControl.addIpRule({name: "ip-new", mask: "32", ip: "10.1.1.1"});
-    accessControl.addIpRule({name: "ip-new2", mask: "16", ip: "10.1.1.10"});
-
-    console.log(accessControl.getXml());
-    
-    
-    /*var fault = new FaultRule({name: "Test1"});
-    fault.condition = "name == 1"
-    var step = new Step({name: "Step 1"});
-    step.condition = "name3 == 1";
-    fault.addStep(step);
-    fault.addStep(new Step({name:"Step2"}));
-    fault.addStep(new Step({name:"Step3"}));
-    
-    console.log(fault.getXml());*/
-
-    /*var flow = new Flow({name: "Test1"});
-    flow.pathCondition("/v1/tigo/home/billing/* /country", "get");
-    var step = new Step({name: "Step 1"});
-    step.condition = "name3 is 1";
-    flow.addStepToResponse(step);
-    flow.addStepToResponse(new Step({name:"Step2"}));
-    flow.addStepToResponse(newexit Step({name:"Step3"}));
-    flow.addStepToRequest(new Step({name:"Step1"}));
-    flow.addStepToRequest(new Step({name:"Step2"}));
-
-    console.log(flow.getXml());*/
-
-    /*var apiproxy = new ApiProxy({name: "test"});
-    apiproxy.basepaths = "/v1/tigo/money/"
-    apiproxy.displayName = "tigo_billing_v1"
-    apiproxy.createdAt = new Date();
-    apiproxy.createdBy = "Miguel Godoy";
-    apiproxy.lastModifiedAt = new Date();
-    apiproxy.lastModifiedBy = "Miguel Godoy";
-    apiproxy.description = "Changin variablename from tigoId check token";
-
-    for(var i = 0; i < 20; i++) {
-      apiproxy.addPolicy("Policy-version-" + i);
-    }
-
-    apiproxy.addProxyEndpoint("ProxyEndpoint-1");
-    
-    for(var i = 0; i < 20; i++) {
-      apiproxy.addResource("jsc://script" + i + ".js");
-    }
-
-    for(var i = 0; i < 6; i++) {
-      apiproxy.addTargetEndpoint("TargetEndpoint-" + i);
-    }
-
-
-
-    console.log(apiproxy.getXml());*/
-
-    /*var proxy = new TargetEndpoint({name: "ProxyEndpoint1"});
-    proxy.description = "Test para ver que funciona";
-    proxy.addStepToDefaultFaultRule(new Step({name: "DefaultFaultRule 1", condition: "proxy1 == 'test'"}));
-    proxy.addStepToDefaultFaultRule(new Step({name: "DefaultFaultRule 2", condition: "proxy2 == 'hola'"}));
-    proxy.addFaultRule(new FaultRule({name: "Hola", condition:"request.content <> ''", step: [new Step({name: "Step Fault Rule 1"}), new Step({name: "Step Fault Rule 1"})]}));
-    proxy.addStepToPreFlowRequest(new Step({name: "Login-Test"}));
-    proxy.addStepToPreFlowResponse(new Step({name: "XML-to-Json"}));
-    proxy.addStepToPostFlowRequest(new Step({name: "Step preflow request"}));
-    proxy.addStepToPostFlowResponse(new Step({name: "Step postflow request"}));
-    
-    var flow = new Flow({name: "Flow 1"});
-    flow.description = "para ver que onda";
-    flow.pathCondition("/v1/tigo/money/", "post");
-    flow.addStepToResponse(new Step({name: "validation-data"}));
-    flow.addStepToRequest(new Step({name: "process-data"}));
-
-    proxy.addFlow(flow);
-
-    var httpTargetConnection = new HTTPTargetConnection({basepath: "/v1/tigo/mobile/"});
-    httpTargetConnection.addProperty({name: "request.retain.headers", value: "User-Agent,Referer,Accept-Language"});
-    httpTargetConnection.addProperty({name: "retain.queryparams.enabled", value: "false"});
-    httpTargetConnection.addProperty({name: "target.copy.pathsuffix", value: "false"});
-    
-
-    proxy.addHttpTargetConnection(httpTargetConnection);
-    
-
-    console.log(proxy.getXml());
-    */
-
-    callback();
-    /*
     var auxVorpal = this;
-
     var swaggers = fs.listSync("./", ["yaml", "json"]);
 
     var flowsProcess = function(path) {
@@ -148,9 +49,9 @@ vorpal
             touch.sync(files[i]);
           }
         } 
-
+        ApiProxy.create(api);
         auxVorpal.delimiter(chalk.green(api.info.title + "$"));
-        
+        //console.log(JSON.stringify(api, null, 4));
         
         //console.log(api.paths);
         callback();
