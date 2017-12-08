@@ -26,7 +26,8 @@
     "dotty": "^0.0.2",
     "moment": "^2.19.1",
     "mocha": "~3.5.3",
-    "chai": "~4.1.2"
+    "chai": "~4.1.2",
+    "cli-table2": "~0.2.0"
   },
   "devDependencies": {},
   "scripts": {
