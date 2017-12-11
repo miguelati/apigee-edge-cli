@@ -17,7 +17,6 @@
     "vorpal": "^1.12.0",
     "string-template": "1.0.0",
     "request": "2.81",
-    "request-promise-native": "^1.0.4",
     "inquirer": "^3.2.2",
     "swagger-parser": "^3.4.2",
     "fs-plus": "^3.0.0",
@@ -27,7 +26,8 @@
     "moment": "^2.19.1",
     "mocha": "~3.5.3",
     "chai": "~4.1.2",
-    "cli-table2": "~0.2.0"
+    "cli-table2": "~0.2.0",
+    "vorpal-as-default": "^0.0.2"
   },
   "devDependencies": {},
   "scripts": {

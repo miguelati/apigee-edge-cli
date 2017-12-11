@@ -11,6 +11,7 @@ const chalk = vorpal.chalk;
 const InitCommand = require('./lib/commands/init');
 const RewirteCommand = require('./lib/commands/rewrite');
 const ApiproxyCommand = require('./lib/commands/apiproxy');
+const DownloadCommand = require('./lib/commands/download');
 
 clear();
 console.log(
@@ -19,9 +20,14 @@ console.log(
 	)
 );
 
-InitCommand.injectCommand(vorpal);
-RewirteCommand.injectCommand(vorpal);
-ApiproxyCommand.injectCommand(vorpal);
+vorpal.localStorage('edge-cli');
+
+
+let commands = [InitCommand, RewirteCommand, ApiproxyCommand, DownloadCommand];
+
+for (var i = 0; i < commands.length; i++) {
+	commands[i].injectCommand(vorpal);
+}
 
 vorpal
   .delimiter('edge$')
