@@ -29,7 +29,8 @@
     "cli-table2": "~0.2.0",
     "vorpal-as-default": "^0.0.2",
     "swagger2-to-postman": "^1.1.7",
-    "zip-local": "^0.3.4"
+    "zip-local": "^0.3.4",
+    "rimraf": "^2.6.2"
   },
   "devDependencies": {},
   "scripts": {

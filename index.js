@@ -13,9 +13,6 @@ const RewirteCommand = require('./lib/commands/rewrite');
 const ApiproxyCommand = require('./lib/commands/apiproxy');
 const DownloadCommand = require('./lib/commands/download');
 
-
-
-
 clear();
 console.log(
 	chalk.yellow(
@@ -24,7 +21,7 @@ console.log(
 );
 
 global.prefs = new Preferences('com.edge-client',{});
-vorpal.localStorage('edge-cli');
+global.localStorage = vorpal.localStorage;
 
 
 let commands = [InitCommand, RewirteCommand, ApiproxyCommand, DownloadCommand];
