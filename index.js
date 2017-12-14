@@ -1,11 +1,9 @@
-
+const vorpal = require('vorpal')();
 const clear = require("clear");
 const CLI = require("clui");
 const figlet = require("figlet");
 const Spinner = CLI.Spinner;
 const touch = require("touch");
-const vorpal = require('vorpal')();
-const chalk = vorpal.chalk;
 const Preferences = require("preferences");
 
 // Command Classes
@@ -17,15 +15,16 @@ require('fs').readdirSync(__dirname + '/lib/commands/').forEach(function(file) {
   }
 });
 
+global.prefs = new Preferences('com.edge-client',{});
+global.localStorage = vorpal.localStorage;
+global.chalk = vorpal.chalk;
+
 clear();
 console.log(
-	chalk.yellow(
+	global.chalk.yellow(
 		figlet.textSync("EDGE CLI", { horizontaleLayout: 'full'})
 	)
 );
-
-global.prefs = new Preferences('com.edge-client',{});
-global.localStorage = vorpal.localStorage;
 
 for (var i = 0; i < commands.length; i++) {
 	commands[i].injectCommand(vorpal);
