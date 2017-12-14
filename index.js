@@ -15,7 +15,7 @@ require('fs').readdirSync(__dirname + '/lib/commands/').forEach(function(file) {
   }
 });
 
-global.prefs = new Preferences('com.edge-client',{});
+global.prefs = new Preferences('edge-client',{});
 global.localStorage = vorpal.localStorage;
 global.chalk = vorpal.chalk;
 
@@ -29,6 +29,8 @@ console.log(
 for (var i = 0; i < commands.length; i++) {
 	commands[i].injectCommand(vorpal);
 }
+
+vorpal.history('edge-client');
 
 vorpal
   .delimiter('edge$')
