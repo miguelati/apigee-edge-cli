@@ -7,11 +7,15 @@ const touch = require("touch");
 const vorpal = require('vorpal')();
 const chalk = vorpal.chalk;
 const Preferences = require("preferences");
+
 // Command Classes
-const InitCommand = require('./lib/commands/init');
-const RewirteCommand = require('./lib/commands/rewrite');
-const ApiproxyCommand = require('./lib/commands/apiproxy');
-const DownloadCommand = require('./lib/commands/download');
+let commands = []
+require('fs').readdirSync(__dirname + '/lib/commands/').forEach(function(file) {
+  if (file.match(/\.js$/) !== null && file !== 'index.js') {
+    //var name = file.replace('.js', '');
+    commands.push(require(__dirname + '/lib/commands/' + file));
+  }
+});
 
 clear();
 console.log(
@@ -22,9 +26,6 @@ console.log(
 
 global.prefs = new Preferences('com.edge-client',{});
 global.localStorage = vorpal.localStorage;
-
-
-let commands = [InitCommand, RewirteCommand, ApiproxyCommand, DownloadCommand];
 
 for (var i = 0; i < commands.length; i++) {
 	commands[i].injectCommand(vorpal);
