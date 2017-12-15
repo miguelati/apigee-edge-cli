@@ -29,7 +29,8 @@
     "touch": "^1.0.0",
     "vorpal": "^1.4.0",
     "zip-local": "^0.3.4",
-    "inquirer": "^3.1.0"
+    "inquirer": "^3.1.0",
+    "overlap": "^2.2.8"
   },
   "devDependencies": {},
   "scripts": {
