@@ -31,7 +31,8 @@
     "zip-local": "^0.3.4",
     "inquirer": "^3.1.0",
     "overlap": "^2.2.8",
-    "cli-size": "^1.0.7"
+    "cli-size": "^1.0.7",
+    "chokidar": "^1.7.0"
   },
   "devDependencies": {},
   "scripts": {

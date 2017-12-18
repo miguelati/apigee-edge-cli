@@ -5,10 +5,12 @@ const figlet = require("figlet");
 const Spinner = CLI.Spinner;
 const touch = require("touch");
 const Preferences = require("preferences");
+const Watcher = require("./lib/classes/core/Watcher");
+
 
 // Command Classes
 let commands = []
-require('fs').readdirSync(__dirname + '/lib/commands/').forEach(function(file) {
+require("fs-plus").readdirSync(__dirname + '/lib/commands/').forEach(function(file) {
   if (file.match(/\.js$/) !== null && file !== 'index.js') {
     //var name = file.replace('.js', '');
     commands.push(require(__dirname + '/lib/commands/' + file));
@@ -18,6 +20,10 @@ require('fs').readdirSync(__dirname + '/lib/commands/').forEach(function(file) {
 global.prefs = new Preferences('edge-client',{});
 global.localStorage = vorpal.localStorage;
 global.chalk = vorpal.chalk;
+
+// To edit
+let watcher = new Watcher("./.tmpWatcher/");
+watcher.start();
 
 clear();
 console.log(
@@ -30,8 +36,28 @@ for (var i = 0; i < commands.length; i++) {
 	commands[i].injectCommand(vorpal);
 }
 
-vorpal.history('edge-client');
 
+const exit = vorpal.find('exit')
+if (exit) {
+  exit.remove()
+}
+
+vorpal
+  .command('exit')
+  .alias('quit')
+  .option('-f, --force', 'Forces process kill without confirmation.')
+  .description('Exits this instance of cbcluster')
+  .action(function (args) {
+    watcher.stop();
+    args.options = args.options || {}
+    args.options.sessionId = this.session.id
+    this.parent.exit(args.options)
+  })
+
+
+
+
+vorpal.history('edge-client');
 vorpal
   .delimiter('edge$')
   .show();
