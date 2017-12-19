@@ -6,6 +6,9 @@
   "directories": {
     "test": "test"
   },
+  "bin" : {
+    "edge": "./index.js"
+  },
   "dependencies": {
     "chai": "~4.1.2",
     "clear": "0.0.1",

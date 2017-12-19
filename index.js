@@ -1,3 +1,4 @@
+#! /usr/bin/env node
 const vorpal = require('vorpal')();
 const clear = require("clear");
 const CLI = require("clui");
@@ -22,7 +23,7 @@ global.localStorage = vorpal.localStorage;
 global.chalk = vorpal.chalk;
 
 // To edit
-let watcher = new Watcher("./.tmpWatcher/");
+let watcher = new Watcher("./.tmpWatcher/", vorpal);
 watcher.start();
 
 clear();
