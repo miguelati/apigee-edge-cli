@@ -21,6 +21,7 @@ require("fs-plus").readdirSync(__dirname + '/lib/commands/').forEach(function(fi
 global.prefs = new Preferences('edge-client',{});
 global.localStorage = vorpal.localStorage;
 global.chalk = vorpal.chalk;
+global.prompt = vorpal.prompt;
 
 // To edit
 let watcher = new Watcher("./.tmpWatcher/", vorpal);
@@ -36,7 +37,6 @@ console.log(
 for (var i = 0; i < commands.length; i++) {
 	commands[i].injectCommand(vorpal);
 }
-
 
 const exit = vorpal.find('exit')
 if (exit) {
@@ -55,10 +55,8 @@ vorpal
     this.parent.exit(args.options)
   })
 
-
-
-
 vorpal.history('edge-client');
 vorpal
   .delimiter('edge$')
   .show();
+
