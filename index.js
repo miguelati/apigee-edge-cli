@@ -9,6 +9,7 @@ const Preferences = require("preferences");
 const Watcher = require("./lib/classes/core/Watcher");
 const Output = require("./lib/classes/core/helpers/Output");
 
+
 // Command Classes
 let commands = []
 require("fs-plus").readdirSync(__dirname + '/lib/commands/').forEach(function(file) {
@@ -16,6 +17,8 @@ require("fs-plus").readdirSync(__dirname + '/lib/commands/').forEach(function(fi
     commands.push(require(__dirname + '/lib/commands/' + file));
   }
 });
+
+
 
 global.prefs = new Preferences('edge-client',{});
 global.localStorage = vorpal.localStorage;
