@@ -8,20 +8,18 @@ const touch = require("touch");
 const Preferences = require("preferences");
 const Watcher = require("./lib/classes/core/Watcher");
 const Output = require("./lib/classes/core/helpers/Output");
-
+const fs = require("fs-plus");
+const APIProxyHelper = require('./lib/classes/core/helpers/APIProxy');
 
 // Command Classes
 let commands = []
-require("fs-plus").readdirSync(__dirname + '/lib/commands/').forEach(function(file) {
+fs.readdirSync(__dirname + '/lib/commands/').forEach(function(file) {
   if (file.match(/\.js$/) !== null && file !== 'index.js') {
     commands.push(require(__dirname + '/lib/commands/' + file));
   }
 });
 
-
-
-global.prefs = new Preferences('edge-client',{});
-global.localStorage = vorpal.localStorage;
+global.prefs = new Preferences('edge-client',{live: false});
 global.chalk = vorpal.chalk;
 global.prompt = vorpal.prompt;
 global.output = new Output();
@@ -56,6 +54,6 @@ vorpal
 
 vorpal.history('edge-client');
 vorpal
-  .delimiter('edge$')
+  .delimiter((fs.existsSync("./apiproxy")) ? global.chalk.green(APIProxyHelper.getInfo().name + "$") : 'edge$')
   .show();
 

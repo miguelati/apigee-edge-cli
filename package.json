@@ -6,7 +6,7 @@
   "directories": {
     "test": "test"
   },
-  "bin" : {
+  "bin": {
     "edge": "./index.js"
   },
   "dependencies": {
@@ -35,7 +35,8 @@
     "inquirer": "^3.1.0",
     "overlap": "^2.2.8",
     "cli-size": "^1.0.7",
-    "chokidar": "^1.7.0"
+    "chokidar": "^1.7.0",
+    "vorpal-autocomplete-fs": "^0.0.3"
   },
   "devDependencies": {},
   "scripts": {
