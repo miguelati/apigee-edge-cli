@@ -17,23 +17,29 @@ fs.readdirSync(__dirname + '/lib/commands/').forEach(function(file) {
   }
 });
 
-global.prefs = new Preferences('edge-client',{live: false});
+let delimeter = "edge";
+let history = "edge-client";
+let preferences = "edge-client";
+if(fs.existsSync("./apiproxy")) {
+	apiproxyName = APIProxyHelper.getInfo().name;
+	delimeter = apiproxyName;
+	history += `-${apiproxyName}`;
+	preferences += `-${apiproxyName}`; 
+}
+
+global.prefs = new Preferences(preferences,{live: {validation: true, upload: false}});
 global.chalk = vorpal.chalk;
 global.prompt = vorpal.prompt;
 global.output = new Output(vorpal);
-// Watcher
-global.watcher = new Watcher(["./.tmpWatcher/", "./apiproxy/"], vorpal);
-watcher.start();
+global.watcher = new Watcher(vorpal);
 
 clear();
 global.output.titleRandom(figlet.textSync("EDGE CLI", { horizontaleLayout: 'full'}));
 
-for (var i = 0; i < commands.length; i++) {
-	commands[i].injectCommand(vorpal);
-}
+for (var i = 0; i < commands.length; i++) commands[i].injectCommand(vorpal);
 
-vorpal.history('edge-client');
+vorpal.history(history);
 vorpal
-  .delimiter((fs.existsSync("./apiproxy")) ? global.chalk.green(APIProxyHelper.getInfo().name + "$") : 'edge$')
+  .delimiter(global.chalk.green(`${delimeter}$`))
   .use(less)
   .show();
