@@ -36,9 +36,10 @@
     "touch": "^1.0.0",
     "vorpal": "^1.4.0",
     "vorpal-autocomplete-fs": "^0.0.3",
-    "zip-local": "^0.3.4",
     "request-promise-native": "^1.0.5",
-    "vorpal-less": "^0.0.13"
+    "vorpal-less": "^0.0.13",
+    "archiver": "^2.1.0",
+    "zip-local": "^0.3.4"
   },
   "devDependencies": {},
   "scripts": {
