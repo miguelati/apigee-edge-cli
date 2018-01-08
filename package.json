@@ -1,11 +1,8 @@
 {
-  "name": "edge",
+  "name": "apigee-edge-cli",
   "version": "1.0.0",
-  "description": "Tool for apigee",
+  "description": "CLI/REPL to apigee.com",
   "main": "index.js",
-  "directories": {
-    "test": "test"
-  },
   "bin": {
     "edge": "./index.js"
   },
@@ -48,6 +45,6 @@
     "apigee",
     "tools"
   ],
-  "author": "Miguel Godoy <miguelgodoyg@gmail.com>",
+  "author": "miguelati <miguelgodoyg@gmail.com>",
   "license": "ISC"
 }
