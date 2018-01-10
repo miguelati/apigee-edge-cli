@@ -36,7 +36,8 @@
     "vorpal-less": "^0.0.13",
     "archiver": "^2.1.0",
     "zip-local": "^0.3.4",
-    "dir-compare": "^1.4.0"
+    "dir-compare": "^1.4.0",
+    "diff": "^3.4.0"
   },
   "devDependencies": {},
   "scripts": {

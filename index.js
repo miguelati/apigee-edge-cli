@@ -35,6 +35,7 @@ global.watcher = new Watcher(vorpal);
 
 clear();
 global.output.titleRandom(figlet.textSync("EDGE CLI", { horizontaleLayout: 'full'}));
+console.log(process.env.ENV_VARIABLE);
 
 for (var i = 0; i < commands.length; i++) commands[i].injectCommand(vorpal);
 
