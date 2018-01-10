@@ -8,6 +8,7 @@ const Output = require("./lib/classes/core/helpers/Output");
 const fs = require("fs-plus");
 const APIProxyHelper = require('./lib/classes/core/helpers/APIProxy');
 const less = require('vorpal-less');
+const _ = require('lodash');
 
 // Command Classes
 let commands = []
@@ -27,7 +28,13 @@ if(fs.existsSync("./apiproxy")) {
 	preferences += `-${apiproxyName}`; 
 }
 
-global.prefs = new Preferences(preferences,{live: {validation: true, upload: false}});
+let defaults = {apigee: {}, live: {validation: true, upload: false}};
+
+if(!_.isEmpty(process.env.APIGEE_USERNAME)) defaults.apigee.username = process.env.APIGEE_USERNAME;
+if(!_.isEmpty(process.env.APIGEE_PASSWORD)) defaults.apigee.password = process.env.APIGEE_PASSWORD; 
+if(!_.isEmpty(process.env.API_ORGANIZATION)) defaults.apigee.organization = process.env.API_ORGANIZATION; 
+
+global.prefs = new Preferences(preferences, defaults);
 global.chalk = vorpal.chalk;
 global.prompt = vorpal.prompt;
 global.output = new Output(vorpal);
@@ -35,7 +42,7 @@ global.watcher = new Watcher(vorpal);
 
 clear();
 global.output.titleRandom(figlet.textSync("EDGE CLI", { horizontaleLayout: 'full'}));
-console.log(process.env.ENV_VARIABLE);
+console.log();
 
 for (var i = 0; i < commands.length; i++) commands[i].injectCommand(vorpal);
 
