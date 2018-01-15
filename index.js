@@ -19,7 +19,7 @@ fs.readdirSync(__dirname + '/lib/commands/').forEach(function(file) {
 Enviroment.init(vorpal);
 
 clear();
-global.output.titleRandom(figlet.textSync("EDGE CLI", { horizontaleLayout: 'full'}));
+global.output.titleRandom(figlet.textSync("APIGEE EDGE CLI", { horizontaleLayout: 'full'}));
 
 for (var i = 0; i < commands.length; i++) commands[i].injectCommand(vorpal);
 
