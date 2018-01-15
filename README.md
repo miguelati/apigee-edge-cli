@@ -66,9 +66,9 @@ You can also get help for individual commands with `help <command>`.
 
 ### A note about defaults
 
-For the sake of convenience, `cbcluster` includes some sensible defaults
-and the defaults (for e.g. bucket creation) which you will find in the
-Couchbase Server web console user interface:
+For the sake of convenience, `apigee-edge-cli` includes some sensible defaults
+and the defaults (for e.g. live.validation) which you will find in the
+'settings' command:
 
 | Default setting        | Value           | Notes                       |
 | ---------------------- | --------------- | ----------------------------| 
