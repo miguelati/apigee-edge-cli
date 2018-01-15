@@ -144,6 +144,15 @@ myApiproxy(Rev2)$
 ```
 
 
+##### apiproxy compare
+
+You can compare between two revisions that was downloaded
+
+```
+myApiproxy(Rev3)$ apiproxy compare
+```
+
+
 ##### apiproxy proxyEndpoint
 
 List all proxyEndpoints
@@ -168,6 +177,15 @@ Lista all policies
 
 ```
 myApiproxy(Rev2)$ apiproxy policies
+.....
+```
+
+##### apiproxy resources
+
+Lista all resources
+
+```
+myApiproxy(Rev2)$ apiproxy resources
 .....
 ```
 
@@ -264,6 +282,26 @@ Create a new policy, you need to select the policy instance, the policy instance
 
 ```
 myApiproxy(Rev2)$ policy create AssignMessage
+.....
+```
+
+### Command 'resource'
+
+##### resource jsc <name>
+
+Open a jsc's resource in your text editor (if you no set, it will ask to you)
+
+```
+myApiproxy(Rev2)$ resource jsc test.js
+.....
+```
+
+##### resource node <name>
+
+Open a node's resource in your text editor (if you no set, it will ask to you)
+
+```
+myApiproxy(Rev2)$ resource node index.js
 .....
 ```
 
