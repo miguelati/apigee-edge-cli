@@ -91,7 +91,7 @@ Determine the cli version & enviroment parameters :
 ```
 edge$ info
 ┌───────────────────────────────────────┬─────────────────────────────────────┐
-│ Apigee-edge-cli Version               │ 1.0.2                               │
+│ Apigee-edge-cli Version               │ 1.0.6                               │
 ├───────────────────────────────────────┼─────────────────────────────────────┤
 │ Apiproxy name                         │ tigoid_query                        │
 ├───────────────────────────────────────┼─────────────────────────────────────┤
@@ -305,6 +305,27 @@ myApiproxy(Rev2)$ resource node index.js
 .....
 ```
 
+### Command 'flow'
+
+##### flow --proxyEndpoint <proxyEndpointName> <name>
+
+Graph as much as request and response, like the UI in Apigee
+
+```
+myApiproxy(Rev2)$ flow --proxyEndpoint default begin
+.....
+```
+
+##### flow edit --proxyEndpoint <proxyEndpointName> <name>
+
+Open the flow xml in a separate file, the cli validate policies names and update the `ProxyEndpoint XML`
+
+```
+myApiproxy(Rev2)$ flow edit --proxyEndpoint default begin
+.....
+```
+
+
 ### Command 'settings'
 
 ##### settings
@@ -347,11 +368,20 @@ When live.validations (in settings) is true, the cli validate the apiproxy's str
 
 If a policy's name attributes change, he verify that be same that file's name, if it's different the cli rename the actual file with the correct name
 
+#### ProxyEndpoints, TargetEndpoints, Policies & Resources
+
+If you add, edit or remove one of these, the cli do the same if is necessary in `APIProxy XML`
+
+#### Flows
+
+You can edit a flow in a separate file, for a easy view
+
 ---
 
 Live Upload
 ===========================
 
+When `live.upload` is true, every time you edit a Policy or a Resource, the cli upload automatically in `apigee.com`
 
 ---
 
