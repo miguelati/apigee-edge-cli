@@ -1,6 +1,6 @@
 {
   "name": "apigee-edge-cli",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "CLI/REPL to apigee.com",
   "main": "index.js",
   "bin": {
@@ -37,7 +37,8 @@
     "archiver": "^2.1.0",
     "zip-local": "^0.3.4",
     "dir-compare": "^1.4.0",
-    "git-diff": "^2.0.4"
+    "git-diff": "^2.0.4",
+    "inquirer-select-line": "^1.1.1"
   },
   "devDependencies": {},
   "scripts": {
