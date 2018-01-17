@@ -136,11 +136,11 @@ myApiproxy(Rev2)$
 or 
 
 ```
-myApiproxy(Rev3)$ apiproxy change
+myApiproxy(Rev2)$ apiproxy change
 ? Select revision:  (Use arrow keys)
-❯ 2
-  3
-myApiproxy(Rev2)$
+  2
+❯ 3
+myApiproxy(Rev3)$
 ```
 
 
@@ -150,6 +150,24 @@ You can compare between two revisions that was downloaded
 
 ```
 myApiproxy(Rev3)$ apiproxy compare
+? Select revision A:  2
+? Select revision B:  3
+┌───────────────────────────────────────┬─────────────────────────────────────┐
+│ Equals                                │ 20                                  │
+├───────────────────────────────────────┼─────────────────────────────────────┤
+│ Distinct                              │ 1                                   │
+├───────────────────────────────────────┼─────────────────────────────────────┤
+│ Revision 2                            │ 0                                   │
+├───────────────────────────────────────┼─────────────────────────────────────┤
+│ Revision 3                            │ 0                                   │
+├───────────────────────────────────────┼─────────────────────────────────────┤
+│ Differences                           │ 1                                   │
+└───────────────────────────────────────┴─────────────────────────────────────┘
+? select a file to compare or cancel: ./2/apiproxy/resources/jsc/test.js <> ./3/apiproxy/resources/jsc/test.js
+@@ -1,1 +1,2 @@
++// Test
+ var test = "";
+ myApiproxy(Rev3)$
 ```
 
 
@@ -158,8 +176,16 @@ myApiproxy(Rev3)$ apiproxy compare
 List all proxyEndpoints
 
 ```
-myApiproxy(Rev2)$ apiproxy proxyEndpoint
-......
+myApiproxy(Rev3)$ apiproxy proxyEndpoint
+
+ApiProxy: myApiproxy
+Revision: 3
+
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ default                                                                     │
+└─────────────────────────────────────────────────────────────────────────────┘
+myApiproxy(Rev3)$
 ```
 
 ##### apiproxy targetEndpoint
@@ -167,8 +193,16 @@ myApiproxy(Rev2)$ apiproxy proxyEndpoint
 List all targetEndpoints
 
 ```
-myApiproxy(Rev2)$ apiproxy targetEndpoint
-......
+myApiproxy(Rev3)$ apiproxy targetEndpoint
+
+ApiProxy: myApiproxy
+Revision: 3
+
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ default                                                                     │
+└─────────────────────────────────────────────────────────────────────────────┘
+myApiproxy(Rev3)$
 ```
 
 ##### apiproxy policies
@@ -176,8 +210,18 @@ myApiproxy(Rev2)$ apiproxy targetEndpoint
 Lista all policies
 
 ```
-myApiproxy(Rev2)$ apiproxy policies
-.....
+myApiproxy(Rev3)$ apiproxy policies
+
+ApiProxy: myApiproxy
+Revision: 3
+
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ XmlToJson                                                                   │
+├─────────────────────────────────────────────────────────────────────────────┤
+│ AssignMessage                                                               │
+└─────────────────────────────────────────────────────────────────────────────┘
+myApiproxy(Rev3)$
 ```
 
 ##### apiproxy resources
@@ -185,8 +229,18 @@ myApiproxy(Rev2)$ apiproxy policies
 Lista all resources
 
 ```
-myApiproxy(Rev2)$ apiproxy resources
-.....
+myApiproxy(Rev3)$ apiproxy resources
+
+ApiProxy: myApiproxy
+Revision: 3
+
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ jsc://test.js                                                               │
+├─────────────────────────────────────────────────────────────────────────────┤
+│ jsc://lib.js                                                                │
+└─────────────────────────────────────────────────────────────────────────────┘
+myApiproxy(Rev3)$
 ```
 
 ### Command 'proxyEndpoint'
@@ -196,8 +250,27 @@ myApiproxy(Rev2)$ apiproxy resources
 Show you all information about the proxyEndpoint
 
 ```
-myApiproxy(Rev2)$ proxyEndpoint default
-.....
+myApiproxy(Rev3)$ proxyEndpoint default
+
+ApiProxy: myApiproxy
+Revision: 3
+
+┌───────────────────────────────────────┬─────────────────────────────────────┐
+│ Name                                  │ default                             │
+├───────────────────────────────────────┼─────────────────────────────────────┤
+│ FaultRules                            │                                     │
+├───────────────────────────────────────┼─────────────────────────────────────┤
+│ PreFlow Request                       │ Login                               │
+├───────────────────────────────────────┼─────────────────────────────────────┤
+│ PreFlow Response                      │                                     │
+├───────────────────────────────────────┼─────────────────────────────────────┤
+│ PostFlow Request                      │                                     │
+├───────────────────────────────────────┼─────────────────────────────────────┤
+│ PostFlow Response                     │ CORS                                │
+├───────────────────────────────────────┼─────────────────────────────────────┤
+│ Flows                                 │ Login                               │
+└───────────────────────────────────────┴─────────────────────────────────────┘
+myApiproxy(Rev3)$
 ```
 
 ##### proxyEndpoint create <new name>
@@ -205,8 +278,11 @@ myApiproxy(Rev2)$ proxyEndpoint default
 Create an proxyEndpoint with the name provided, and will open your editor (if you no set, it will ask to you)
 
 ```
-myApiproxy(Rev2)$ proxyEndpoint create default_test
-.....
+myApiproxy(Rev3)$ proxyEndpoint create default_test
+Enter the basepath:/test/
+? Select the Virtual Hosts: default, secure
+ProxyEndpoint default_test was created.
+myApiproxy(Rev3)$
 ```
 
 ##### proxyEndpoint preflow <name>
@@ -214,8 +290,20 @@ myApiproxy(Rev2)$ proxyEndpoint create default_test
 Preflow Graph as much as request and response, like the UI in Apigee
 
 ```
-myApiproxy(Rev2)$ proxyEndpoint preflow default
-.....
+myApiproxy(Rev3)$ proxyEndpoint preflow default
++------------------------------------------------------------------------------+
+|   Request ->                                                                 |
+| +-------+                                                                    |
+| | Login |                                                                    |
+| +-------+                                                                    |
++------------------------------------------------------------------------------+
++------------------------------------------------------------------------------+
+|                                                                <- Response   |
+|                                                                              |
+|                                                                              |
+|                                                                              |
++------------------------------------------------------------------------------+
+myApiproxy(Rev3)$
 ```
 
 ##### proxyEndpoint postflow <name>
@@ -223,7 +311,20 @@ myApiproxy(Rev2)$ proxyEndpoint preflow default
 Postflow Graph as much as request and response, like the UI in Apigee
 
 ```
-myApiproxy(Rev2)$ proxyEndpoint postflow default
+myApiproxy(Rev3)$ proxyEndpoint postflow default
++------------------------------------------------------------------------------+
+|   Request ->                                                                 |
+|                                                                              |
+|                                                                              |
+|                                                                              |
++------------------------------------------------------------------------------+
++------------------------------------------------------------------------------+
+|                                                                <- Response   |
+|                                                                     +------+ |
+|                                                                     | CORS | |
+|                                                                     +------+ |
++------------------------------------------------------------------------------+
+myApiproxy(Rev3)$
 .....
 ```
 
@@ -235,7 +336,26 @@ Show you all information about the targetEndpoint
 
 ```
 myApiproxy(Rev2)$ targetEndpoint default
-.....
+
+ApiProxy: myApiproxy
+Revision: 3
+
+┌───────────────────────────────────────┬─────────────────────────────────────┐
+│ Name                                  │ default                             │
+├───────────────────────────────────────┼─────────────────────────────────────┤
+│ FaultRules                            │                                     │
+├───────────────────────────────────────┼─────────────────────────────────────┤
+│ PreFlow Request                       │                                     │
+├───────────────────────────────────────┼─────────────────────────────────────┤
+│ PreFlow Response                      │                                     │
+├───────────────────────────────────────┼─────────────────────────────────────┤
+│ PostFlow Request                      │                                     │
+├───────────────────────────────────────┼─────────────────────────────────────┤
+│ PostFlow Response                     │                                     │
+├───────────────────────────────────────┼─────────────────────────────────────┤
+│ Flows                                 │                                     │
+└───────────────────────────────────────┴─────────────────────────────────────┘
+myApiproxy(Rev3)$
 ```
 
 ##### targetEndpoint create <new name>
@@ -243,8 +363,11 @@ myApiproxy(Rev2)$ targetEndpoint default
 Create an targetEndpoint with the name provided, and will open your editor (if you no set, it will ask to you)
 
 ```
-myApiproxy(Rev2)$ targetEndpoint create default_test
-.....
+myApiproxy(Rev3)$ targetEndpoint create default_test
+? Select type: HTTPTargetConnection
+Enter the url:http://test.com/api
+TargetEndpoint default_test was created.
+myApiproxy(Rev3)$
 ```
 
 ##### targetEndpoint preflow <name>
@@ -252,7 +375,20 @@ myApiproxy(Rev2)$ targetEndpoint create default_test
 Preflow Graph as much as request and response, like the UI in Apigee
 
 ```
-myApiproxy(Rev2)$ targetEndpoint preflow default
+myApiproxy(Rev3)$ targetEndpoint preflow default
++------------------------------------------------------------------------------+
+|   Request ->                                                                 |
+|                                                                              |
+|                                                                              |
+|                                                                              |
++------------------------------------------------------------------------------+
++------------------------------------------------------------------------------+
+|                                                                <- Response   |
+|                                                                              |
+|                                                                              |
+|                                                                              |
++------------------------------------------------------------------------------+
+myApiproxy(Rev3)$
 .....
 ```
 
@@ -261,8 +397,20 @@ myApiproxy(Rev2)$ targetEndpoint preflow default
 Postflow Graph as much as request and response, like the UI in Apigee
 
 ```
-myApiproxy(Rev2)$ targetEndpoint postflow default
-.....
+myApiproxy(Rev3)$ targetEndpoint postflow default
++------------------------------------------------------------------------------+
+|   Request ->                                                                 |
+|                                                                              |
+|                                                                              |
+|                                                                              |
++------------------------------------------------------------------------------+
++------------------------------------------------------------------------------+
+|                                                                <- Response   |
+|                                                                              |
+|                                                                              |
+|                                                                              |
++------------------------------------------------------------------------------+
+myApiproxy(Rev3)$
 ```
 
 ### Command 'policy'
@@ -272,8 +420,9 @@ myApiproxy(Rev2)$ targetEndpoint postflow default
 Open a policy in your text editor (if you no set, it will ask to you)
 
 ```
-myApiproxy(Rev2)$ policy JsonToXml
-.....
+myApiproxy(Rev3)$ policy JsonToXml
+./3/apiproxy/policies/JsonToXml.xml was opened!
+myApiproxy(Rev3)$
 ```
 
 ##### policy create <new name>
@@ -281,8 +430,17 @@ myApiproxy(Rev2)$ policy JsonToXml
 Create a new policy, you need to select the policy instance, the policy instance can have a wizard or template (if you no set, it will ask to you)
 
 ```
-myApiproxy(Rev2)$ policy create AssignMessage
-.....
+myApiproxy(Rev3)$ policy create AccessControl
+? Select your policy:  Access Control
+Enter the Display Name:Test
+? Select no match rule for ipRules: Allow
+? Select type match rule: Deny
+Enter the ip match:192.168.1.1
+Enter the mask:32
+? Select continue: Continue to finish
+? Select Validation Based On: For all IP
+./3/apiproxy/policies/AccessControl.xml was opened!
+myApiproxy(Rev3)$
 ```
 
 ### Command 'resource'
@@ -292,8 +450,9 @@ myApiproxy(Rev2)$ policy create AssignMessage
 Open a jsc's resource in your text editor (if you no set, it will ask to you)
 
 ```
-myApiproxy(Rev2)$ resource jsc test.js
-.....
+myApiproxy(Rev3)$ resource jsc test.js
+./3/apiproxy/resources/jsc/test.js was opened!
+myApiproxy(Rev3)$
 ```
 
 ##### resource node <name>
@@ -301,7 +460,10 @@ myApiproxy(Rev2)$ resource jsc test.js
 Open a node's resource in your text editor (if you no set, it will ask to you)
 
 ```
-myApiproxy(Rev2)$ resource node index.js
+myApiproxy(Rev3)$ resource node index.js
+./3/apiproxy/resources/node/index.js was opened!
+myApiproxy(Rev3)$
+
 .....
 ```
 
@@ -312,8 +474,21 @@ myApiproxy(Rev2)$ resource node index.js
 Graph as much as request and response, like the UI in Apigee
 
 ```
-myApiproxy(Rev2)$ flow --proxyEndpoint default begin
-.....
+myApiproxy(Rev3)$ flow --proxyEndpoint default begin
++------------------------------------------------------------------------------+
+|   Request ->                                                                 |
+| +--------+                                                                   |
+| | Create |                                                                   |
+| +--------+                                                                   |
++------------------------------------------------------------------------------+
++------------------------------------------------------------------------------+
+|                                                                <- Response   |
+|                                                                  +---------+ |
+|                                                                  | Prepare | |
+|                                                                  +---------+ |
++------------------------------------------------------------------------------+
+myApiproxy(Rev3)$
+
 ```
 
 ##### flow edit --proxyEndpoint <proxyEndpointName> <name>
@@ -321,8 +496,9 @@ myApiproxy(Rev2)$ flow --proxyEndpoint default begin
 Open the flow xml in a separate file, the cli validate policies names and update the `ProxyEndpoint XML`
 
 ```
-myApiproxy(Rev2)$ flow edit --proxyEndpoint default begin
-.....
+myApiproxy(Rev3)$ flow edit --proxyEndpoint default begin
+./.tmpWatcher/proxyEndpoint_default_flow_begin.xml was opened!
+myApiproxy(Rev3)$
 ```
 
 
@@ -333,8 +509,28 @@ myApiproxy(Rev2)$ flow edit --proxyEndpoint default begin
 List all settings that you can edit with his values
 
 ```
-myApiproxy(Rev2)$ settings
-.....
+myApiproxy(Rev3)$ settings
+
+┌───────────────────────────────────────┬─────────────────────────────────────┐
+│ Keys                                  │ Values                              │
+├───────────────────────────────────────┼─────────────────────────────────────┤
+│ apigee.username                       │ miguelati@gmail.com                 │
+├───────────────────────────────────────┼─────────────────────────────────────┤
+│ apigee.password                       │ ************                        │
+├───────────────────────────────────────┼─────────────────────────────────────┤
+│ apigee.organization                   │ org                                 │
+├───────────────────────────────────────┼─────────────────────────────────────┤
+│ editor                                │ sublime                             │
+├───────────────────────────────────────┼─────────────────────────────────────┤
+│ graph.withNames                       │ true                                │
+├───────────────────────────────────────┼─────────────────────────────────────┤
+│ live.validation                       │ true                                │
+├───────────────────────────────────────┼─────────────────────────────────────┤
+│ live.upload                           │ false                               │
+├───────────────────────────────────────┼─────────────────────────────────────┤
+│ template                              │                                     │
+└───────────────────────────────────────┴─────────────────────────────────────┘
+myApiproxy(Rev3)$
 ```
 
 ##### settings save <key>
@@ -342,8 +538,10 @@ myApiproxy(Rev2)$ settings
 Edit a key of settings
 
 ```
-myApiproxy(Rev2)$ settings save apigee.username
-.....
+myApiproxy(Rev3)$ settings save live.upload
+? You want live upload? Yes
+live.upload was changed!
+myApiproxy(Rev3)$
 ```
 
 ### Command 'info'
@@ -353,8 +551,17 @@ myApiproxy(Rev2)$ settings save apigee.username
 Information about your enviroment
 
 ```
-myApiproxy(Rev2)$ info
-.....
+myApiproxy(Rev3)$ info
+┌───────────────────────────────────────┬─────────────────────────────────────┐
+│ Apigee-edge-cli Version               │ 1.0.7                               │
+├───────────────────────────────────────┼─────────────────────────────────────┤
+│ Apiproxy name                         │ myApiproxy                          │
+├───────────────────────────────────────┼─────────────────────────────────────┤
+│ Apiproxy actual revision              │ 3                                   │
+├───────────────────────────────────────┼─────────────────────────────────────┤
+│ Apiproxies revisions downloads        │ 3,2                                 │
+└───────────────────────────────────────┴─────────────────────────────────────┘
+myApiproxy(Rev3)$
 ```
 
 ---
