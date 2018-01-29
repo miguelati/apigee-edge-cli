@@ -9,6 +9,7 @@ const _ = require('lodash');
 const Enviroment = require("./lib/classes/core/Enviroment");
 const updateNotifier = require('update-notifier');
 const pkg = require('./package.json');
+const NewUpdate = require('./lib/classes/drawer/NewUpdate');
 
 // Command Classes
 let commands = []
@@ -22,12 +23,21 @@ Enviroment.init(vorpal);
 
 clear();
 global.output.titleRandom(figlet.textSync("APIGEE EDGE CLI", { horizontaleLayout: 'full'}));
-updateNotifier({pkg}).notify();
 
 for (var i = 0; i < commands.length; i++) commands[i].injectCommand(vorpal);
 
 vorpal.history(global.apiproxyName);
-vorpal
-  .delimiter(global.chalk.green(Enviroment.delimiter()))
-  .use(less)
-  .show();
+
+updateNotifier({
+	pkg,
+	updateCheckInterval: 0, // 1 week
+	callback: (error, update) => {
+		console.log(NewUpdate.draw(update.latest, update.current, update.type, update.name));
+		vorpal
+		  .delimiter(global.chalk.green(Enviroment.delimiter()))
+		  .use(less)
+		  .show();
+	}
+}).notify()
+
+
