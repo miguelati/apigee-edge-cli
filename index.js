@@ -7,6 +7,8 @@ const APIProxyHelper = require('./lib/classes/core/helpers/APIProxy');
 const less = require('vorpal-less');
 const _ = require('lodash');
 const Enviroment = require("./lib/classes/core/Enviroment");
+const updateNotifier = require('update-notifier');
+const pkg = require('./package.json');
 
 // Command Classes
 let commands = []
@@ -20,6 +22,7 @@ Enviroment.init(vorpal);
 
 clear();
 global.output.titleRandom(figlet.textSync("APIGEE EDGE CLI", { horizontaleLayout: 'full'}));
+updateNotifier({pkg}).notify();
 
 for (var i = 0; i < commands.length; i++) commands[i].injectCommand(vorpal);
 
