@@ -35,9 +35,9 @@ updateNotifier({
 	pkg,
 	updateCheckInterval: 0, // 1 week
 	callback: (error, update) => {
+		countdown.stop();
 		if(update.latest > update.current)
 			console.log(NewUpdate.draw(update.latest, update.current, update.type, update.name));
-		countdown.stop();
 		vorpal
 		  .delimiter(global.chalk.green(Enviroment.delimiter()))
 		  .use(less)
