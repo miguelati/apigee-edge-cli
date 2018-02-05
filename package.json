@@ -1,6 +1,6 @@
 {
   "name": "apigee-edge-cli",
-  "version": "1.0.30",
+  "version": "1.0.31",
   "description": "CLI/REPL to apigee.com",
   "main": "index.js",
   "bin": {
@@ -8,7 +8,6 @@
   },
   "dependencies": {
     "chai": "~4.1.2",
-    "chokidar": "^2.0.0",
     "clear": "0.0.1",
     "cli-size": "^1.0.9",
     "cli-table2": "~0.2.0",
@@ -34,12 +33,13 @@
     "vorpal-autocomplete-fs": "^0.0.3",
     "request-promise-native": "^1.0.5",
     "vorpal-less": "^0.0.13",
-    "archiver": "^2.1.0",
-    "zip-local": "^0.3.4",
+    "adm-zip": "^0.4.7",
     "dir-compare": "^1.4.0",
     "git-diff": "^2.0.4",
     "inquirer-select-line": "^1.1.1",
-    "update-notifier": "^2.3.0"
+    "update-notifier": "^2.3.0",
+    "archiver": "^2.1.1",
+    "chokidar": "^2.0.0"
   },
   "devDependencies": {},
   "scripts": {
