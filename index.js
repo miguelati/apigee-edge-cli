@@ -5,6 +5,7 @@ const figlet = require("figlet");
 const fs = require("fs-plus");
 const APIProxyHelper = require('./lib/classes/core/helpers/APIProxy');
 const less = require('vorpal-less');
+const grep = require('vorpal-grep');
 const _ = require('lodash');
 const Enviroment = require("./lib/classes/core/Enviroment");
 const updateNotifier = require('update-notifier');
@@ -41,6 +42,7 @@ updateNotifier({
 		vorpal
 		  .delimiter(global.chalk.green(Enviroment.delimiter()))
 		  .use(less)
+		  .use(grep)
 		  .show();
 	}
 }).notify()

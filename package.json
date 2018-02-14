@@ -1,6 +1,6 @@
 {
   "name": "apigee-edge-cli",
-  "version": "1.0.35",
+  "version": "1.0.36",
   "description": "CLI/REPL to apigee.com",
   "main": "index.js",
   "bin": {
@@ -40,7 +40,8 @@
     "update-notifier": "^2.3.0",
     "archiver": "^2.1.1",
     "chokidar": "^2.0.0",
-    "find-in-files": "^0.5.0"
+    "find-in-files": "^0.5.0",
+    "vorpal-grep": "^0.2.0"
   },
   "devDependencies": {},
   "scripts": {
