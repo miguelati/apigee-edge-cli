@@ -1,6 +1,6 @@
 {
   "name": "apigee-edge-cli",
-  "version": "1.0.38",
+  "version": "1.0.39",
   "description": "CLI/REPL to apigee.com",
   "main": "index.js",
   "bin": {
